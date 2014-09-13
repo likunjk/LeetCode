@@ -6,16 +6,16 @@ public:
         int n = gas.size();
         
         int count = 0;
-        int total = 0;
+        int current = 0;
         for(int i=0; i<2*n; ++i)
         {
             int index = i%n;
-            total += gas[index];
+            current += gas[index];
             
-            if(total >= cost[index])
+            if(current >= cost[index])
             {
                 count++;
-                total -= cost[index];
+                current -= cost[index];
                 if(count==n)
                 {
                     //因为题目保证了结果的唯一性，因此可以直接返回
@@ -25,7 +25,7 @@ public:
             else    //说明从该点不能到达下一点，那么直接从下一点开始
             {
                 count = 0;
-                total = 0;
+                current = 0;
             }
         }
         
