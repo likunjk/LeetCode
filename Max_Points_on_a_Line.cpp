@@ -33,7 +33,7 @@ public:
                     column++;
                 else
                 {
-                    // 这里呀特别注意：给定的x和y都是整数，在做出发时需要转换成浮点数
+                    // 这里要特别注意：给定的x和y都是整数，在做除法时需要转换成浮点数
                     double k = (points[j].y-points[i].y)*1.0/(points[j].x-points[i].x);
                     ump[k]++;
                 }
