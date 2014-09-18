@@ -1,0 +1,38 @@
+class Solution {
+public:
+    // 有重复元素，就比较麻烦了
+    // 跟没有重复元素的结构差不多，但是需要处理3个位置值都相同的情况
+    bool search(int A[], int n, int target) 
+    {
+        int left = 0;
+        int right = n-1;
+        while(left <= right)
+        {
+            int mid = (left+right)/2;
+            if(A[mid]==target)
+                return true;
+            else if(A[left]==A[mid] && A[right]==A[mid])    //当3个元素的值都相等时，就无法确定究竟该往哪走呢?
+            {
+                if(A[left]!=target) //那就只能走1步了
+                    left++;
+                else
+                    return true;
+            }
+            else if(A[mid] >= A[left])  //说明mid位于左边
+            {
+                if(target < A[mid] && target >= A[left])
+                    right = mid-1;
+                else
+                    left = mid+1;
+            }
+            else
+            {
+                if(target > A[mid] && target <= A[right])
+                    left = mid+1;
+                else
+                    right = mid-1;
+            }
+        }
+        return false;
+    }
+};
