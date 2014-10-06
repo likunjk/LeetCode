@@ -1,0 +1,20 @@
+class Solution {
+public:
+    // 经典的题目，各大公司笔试题经常遇到。解决的方案就是枚举
+    int numTrees(int n) 
+    {
+        if(n==0)
+            return 0;
+        vector<int> dp(n+1, 0);
+        dp[0] = 1;
+        for(int i=1; i<=n; ++i)
+        {
+            int tt = i-1;   //减去根节点
+            for(int j=0; j<=tt; ++j)
+            {
+                dp[i] += dp[j]*dp[tt-j];    //j:左子树节点数  tt-j:右子树节点数
+            }
+        }
+        return dp[n];
+    }
+};
