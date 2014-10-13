@@ -12,7 +12,7 @@ public:
     ListNode* mergeList(ListNode *p1, ListNode *p2)
     {
         if(p1==NULL)
-            return p1;
+            return p2;
         if(p2==NULL)
             return p1;
         ListNode *head = new ListNode(0);   //构造一个头结点，方便编码
